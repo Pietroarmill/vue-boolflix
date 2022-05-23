@@ -1,28 +1,51 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <AppHeader @searchClick="datoCercato($event)" />
+    <AppMain :movieArray="this.movies" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AppHeader from "./components/AppHeader.vue";
+import AppMain from "./components/AppMain.vue";
+import axios from "axios";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    AppHeader,
+    AppMain,
+  },
+  data() {
+    return {
+      wordSearch: '',
+      movies: [],
+    }
+  },
+  created() { },
+  methods: {
+    datoCercato(word) {
+      this.movies = [];
+      this.wordSearch = word.toLowerCase();
+      console.log(this.wordSearch);
+      axios.get("https://api.themoviedb.org/3/search/movie", {
+        params: {
+          api_key: "3879e014591b98424ebc389a9ced879e",
+          query: this.wordSearch,
+        }
+      })
+        .then((resp) => {
+          resp.data.results.forEach(element => {
+            this.movies.push(element);
+          });
+        })
+      console.log(this.movies);
+      this.wordSearch = '';
+    },
+  },
+};
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import "./style/common.scss";
 </style>
