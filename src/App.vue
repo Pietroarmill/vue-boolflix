@@ -56,7 +56,6 @@ export default {
       })
 
       console.log(this.movies);
-      this.wordSearch = '';
     },
   },
 };
@@ -67,5 +66,6 @@ export default {
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+  background-color: #242424;
 }
 </style>

@@ -89,7 +89,6 @@ export default {
 @import '~@fortawesome/fontawesome-free/css/all.min.css';
 
 .main {
-  background-color: rgb(173, 230, 206);
   display: flex;
   padding: 2rem 0;
   align-items: center;
