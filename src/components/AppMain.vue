@@ -18,9 +18,9 @@
               <!-- <img src="../assets/img/en.jpg" alt=""> -->
               <img v-if="item.original_language === 'en'" src="../assets/img/en.jpg" alt="">
               <img v-else-if="item.original_language === 'it'" src="../assets/img/it.jpg" alt="">
-              <img v-else-if="item.original_language === 'fr'" src="../assets/img/Flag_of_France.png" alt="">
-              <img v-else-if="item.original_language === 'sv'" src="../assets/img/sweden.jpg" alt="">
-              <span v-else>{{ item.original_language }}</span>
+              <img v-else-if="item.original_language === 'fr'" src="../assets/img/fr.jpg" alt="">
+              <img v-else-if="item.original_language === 'sv'" src="../assets/img/sv.jpg" alt="">
+              <span v-else>{{ item.original_language }}</span> 
             </div>
             <div class="vote">
               <span>Voto: </span>
@@ -79,7 +79,7 @@ export default {
   name: "AppMain",
   props: {
     movieArray: Array,
-  }
+  },
 };
 </script>
 
@@ -103,6 +103,9 @@ export default {
     margin: 1rem 5px;
     max-width: 342px;
     background-color: #000000;
+    // min-height: 40vh;
+    height: 25vw;
+    overflow: hidden;
 
     .image-box {
       .poster {
@@ -113,6 +116,8 @@ export default {
         color: white;
         padding: .8rem;
         display: none;
+        height: 100%;
+
 
         div {
           margin: .5rem 0;

@@ -20,12 +20,12 @@ export default {
     return {
       wordSearch: '',
       movies: [],
+      series: [],
     }
   },
   created() { },
   methods: {
     datoCercato(word) {
-      this.movies = [];
       this.wordSearch = word.toLowerCase();
       console.log(this.wordSearch);
 
@@ -49,8 +49,6 @@ export default {
       })
       .then((resp) => {
         resp.data.results.forEach(element => {
-
-
           this.movies.push(element);
         });
       })
